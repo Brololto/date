@@ -1250,19 +1250,8 @@ end)
 
 
 spawn(function() --Scremaer
-while task.wait(434) do
-if workspace.Ambience_Seek.Playing == true then
-			continue
-		end
-		if workspace.Ambience_Figure.Playing == true then
-			continue
-		end
-		if workspace.Ambience_FigureEnd.Playing == true then
-			continue
-		end
-		if workspace.Ambience_FigureStart.Playing == true then
-			continue
-		end
+while task.wait(3.5) do
+if game.ReplicatedStorage.GameData.LatestRoom.Value == 45 then
 local function GetGitSound(GithubSnd,SoundName)
 				local url=GithubSnd
 				if not isfile(SoundName..".mp3") then
@@ -1272,7 +1261,7 @@ local function GetGitSound(GithubSnd,SoundName)
 				sound.SoundId=(getcustomasset or getsynasset)(SoundName..".mp3")
 				return sound
 			end
-game:GetService("ReplicatedStorage").GameData.LatestRoom:GetPropertyChangedSignal("Value"):Wait()   
+
 -- Create entity
 	    local room = workspace.CurrentRooms[game.Players.LocalPlayer:GetAttribute("CurrentRoom")]
 	local color = Color3.fromRGB(0, 0, 0)
@@ -1392,6 +1381,7 @@ Screamer:Play()
 	
 	-- Run the created entity
 	Creator.runEntity(entity)
+        end
 	end
 	end)
 
