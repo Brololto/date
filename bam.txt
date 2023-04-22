@@ -1162,7 +1162,7 @@ local Creator = loadstring(game:HttpGet("https://raw.githubusercontent.com/Regul
 -- Create entity
 
 local entity = Creator.createEntity({
-    CustomName = "Enraged Terror", -- Custom name of your entity
+    CustomName = "EnragedTerror", -- Custom name of your entity
     Model = "https://github.com/Brololto/NEWENRAGEDTERRORHARDCORE/blob/main/enrager_terroror.rbxm?raw=true", -- Can be GitHub file or rbxassetid
     Speed = 940, -- Percentage, 100 = default Rush speed
     DelayTime = 3, -- Time before starting cycles (seconds)
@@ -1219,6 +1219,7 @@ end
 
 entity.Debug.OnEntityDespawned = function(entityModel)
     print("Entity has despawned:", entityModel)
+workspace.EnragedTerror:Destroy()
 end
 
 entity.Debug.OnEntityStartMoving = function(entityModel)
@@ -1360,6 +1361,7 @@ Screamer:Play()
 	
 	entity.Debug.OnEntityDespawned = function(entityModel)
 	    print("Entity has despawned:", entityModel)
+workspace.Screamer:Destroy()
 	    local Achievements = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
 	
 	-- Creates and displays your custom achievement
