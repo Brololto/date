@@ -1005,6 +1005,17 @@ local function GetGitSound(GithubSnd,SoundName)
 	local TweenService = game:GetService("TweenService")
 	local TW = TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(80),{TintColor = Color3.fromRGB(255, 255, 255)})
 	TW:Play()
+local TW = game:GetService("TweenService")
+local TWInfo = TweenInfo.new(3)
+
+for i, v in pairs(workspace.CurrentRooms:GetDescendants()) do
+    if v:IsA("PointLight") and v.Enabled == true then
+        TW:Create(v, TWInfo, {Color = Color3.fromRGB(255, 0, 0)}):Play()
+    end
+    if v:IsA("SpotLight") and v.Enabled == true then
+        TW:Create(v, TWInfo, {Color = Color3.fromRGB(255, 0, 0)}):Play()
+    end
+end
 	local Creator = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors%20Entity%20Spawner/Source.lua"))()
 	
 	
